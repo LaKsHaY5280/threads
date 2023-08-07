@@ -6,7 +6,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
   title: "Threads",
-  description: " Threads clone made with NEXT.js 13",
+  description: "Threads clone made with NEXT.js 13",
 };
 
 const inter = Inter({ subsets: ["latin"] });
