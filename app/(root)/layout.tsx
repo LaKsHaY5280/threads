@@ -1,6 +1,6 @@
-import "../globals.css";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import '../globals.css'
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
 import { ClerkProvider } from "@clerk/nextjs";
 import Topbar from "../../components/shared/Topbar";
 import LeftSidebar from "../../components/shared/LeftSidebar";
@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <ClerkProvider
       publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
-    > 
+    >
       <html lang="en">
         <body className={inter.className}>
           <Topbar />
