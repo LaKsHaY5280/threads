@@ -51,7 +51,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
             key={childItem._id}
             id={childItem._id}
             currentUserId={user.id}
-            parentId={childItem.parentId}
+            parentId={childItem.parentId} 
             content={childItem.text}
             author={childItem.author}
             community={childItem.community}

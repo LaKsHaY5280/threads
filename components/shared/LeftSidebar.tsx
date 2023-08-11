@@ -6,7 +6,7 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { SignOutButton, SignedIn } from "@clerk/nextjs";
 
-function LeftSidebar() {
+export default function LeftSidebar() {
   const router = useRouter();
   const pathname = usePathname();
 
@@ -17,7 +17,7 @@ function LeftSidebar() {
           const isActive =
             (pathname.includes(link.route) && link.route.length > 1) ||
             pathname === link.route;
-
+          
           return (
             <Link
               href={link.route}
@@ -53,5 +53,3 @@ function LeftSidebar() {
     </section>
   );
 }
-
-export default LeftSidebar;
