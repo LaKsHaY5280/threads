@@ -49,18 +49,14 @@ export async function fetchPosts(pageNumber = 1, pageSize = 20) {
 }
 
 interface Params {
-  text: string;
-  author: string;
-  communityId: string | null;
-  path: string;
+  text: string,
+  author: string,
+  communityId: string | null,
+  path: string,
 }
 
-export async function createThread({
-  text,
-  author,
-  communityId,
-  path,
-}: Params) {
+export async function createThread({ text, author, communityId, path }: Params
+) {
   try {
     connectToDB();
 
@@ -72,7 +68,7 @@ export async function createThread({
     const createdThread = await Thread.create({
       text,
       author,
-      // community: communityIdObject, // Assign communityId if provided, or leave it null for personal account
+      community: communityIdObject, // Assign communityId if provided, or leave it null for personal account
     });
 
     // Update User model
@@ -81,10 +77,10 @@ export async function createThread({
     });
 
     if (communityIdObject) {
-    // Update Community model
-    await Community.findByIdAndUpdate(communityIdObject, {
-    $push: { threads: createdThread._id },
-    });
+      // Update Community model
+      await Community.findByIdAndUpdate(communityIdObject, {
+        $push: { threads: createdThread._id },
+      });
     }
 
     revalidatePath(path);
@@ -151,8 +147,8 @@ export async function deleteThread(id: string, path: string): Promise<void> {
 
     // Update Community model
     await Community.updateMany(
-    { _id: { $in: Array.from(uniqueCommunityIds) } },
-    { $pull: { threads: { $in: descendantThreadIds } } }
+      { _id: { $in: Array.from(uniqueCommunityIds) } },
+      { $pull: { threads: { $in: descendantThreadIds } } }
     );
 
     revalidatePath(path);

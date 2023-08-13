@@ -13,8 +13,7 @@ export async function fetchUser(userId: string) {
   try {
     connectToDB();
 
-    return await User.findOne({ id: userId })
-      .populate({
+    return await User.findOne({ id: userId }).populate({
       path: "communities",
       model: Community,
     });
@@ -108,7 +107,7 @@ export async function fetchUsers({
   pageNumber?: number;
   pageSize?: number;
   sortBy?: SortOrder;
-}) { 
+}) {
   try {
     connectToDB();
 
