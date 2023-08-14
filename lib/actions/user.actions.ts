@@ -9,7 +9,7 @@ import User from "../models/user.model";
 
 import { connectToDB } from "../mongoose";
 
-export async function fetchUser(userId: string) {
+export async function fetchUser(userId: string | null) {
   try {
     connectToDB();
 
@@ -23,7 +23,7 @@ export async function fetchUser(userId: string) {
 }
 
 interface Params {
-  userId: string;
+  userId: string | null | undefined;
   username: string;
   name: string;
   bio: string;
@@ -102,7 +102,7 @@ export async function fetchUsers({
   pageSize = 20,
   sortBy = "desc",
 }: {
-  userId: string;
+  userId: string | undefined;
   searchString?: string;
   pageNumber?: number;
   pageSize?: number;
